@@ -44,6 +44,7 @@ header {
 
   font-size: 20px;
 
+  color: #000;
   align-items: center;
   justify-content: space-around;
 }
