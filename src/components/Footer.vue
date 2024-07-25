@@ -6,7 +6,7 @@
   <footer>
     <div flex items-center class="logo">
       <img src="/favicon.svg">
-      <h1 text-2xl font-bold>
+      <h1 pr-38px text-2xl font-bold>
         QuotaWish
       </h1>
     </div>
