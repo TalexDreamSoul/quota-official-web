@@ -4,7 +4,7 @@
 
 <template>
   <footer>
-    <div flex flex-1 items-center class="logo">
+    <div flex items-center class="logo">
       <img src="/favicon.svg">
       <h1 text-2xl font-bold>
         QuotaWish
@@ -23,12 +23,24 @@
 
 <style>
 @media (max-width: 768px) {
+  div.info {
+    flex-direction: column !important;
+  }
+
   .copyright {
     display: none;
   }
 }
 
-div.logo,
+info.div a {
+  width: 200px;
+}
+
+div.logo {
+  width: max-content;
+  height: 128px;
+}
+
 div.logo img {
   width: 128px;
   height: 128px;
@@ -55,7 +67,6 @@ footer {
 
   left: 50%;
 
-  flex: 1;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;

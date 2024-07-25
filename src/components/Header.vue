@@ -4,7 +4,7 @@
 
 <template>
   <header>
-    <div flex flex-1 items-center class="logo">
+    <div flex flex-1 items-center justify-center class="logo">
       <img src="/favicon.svg" alt="logo">
       <h1 text-1em font-bold>
         科塔锐行
@@ -19,7 +19,7 @@
       <span cursor-pointer hover:op-75>科塔开放</span>
     </div>
 
-    <div class="header-nav-personal personal" mr-2 flex-1 text-right text-1.125rem>
+    <div class="header-nav-personal personal" mr-2 flex flex-1 items-center justify-center text-right text-1.125rem>
       注册 | 登录
     </div>
   </header>
@@ -45,6 +45,6 @@ header {
   font-size: 20px;
 
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 </style>
