@@ -11,7 +11,7 @@
 
 <style>
 .DefaultLayout > header {
-  z-index: 1;
+  z-index: 10;
   position: sticky;
 
   top: 0;
