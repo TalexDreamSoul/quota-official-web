@@ -4,15 +4,14 @@
 
 <template>
   <footer>
-    <div flex items-center class="logo">
+    <div flex flex-1 items-center class="logo">
       <img src="/favicon.svg">
       <h1 text-2xl font-bold>
         QuotaWish
       </h1>
     </div>
-    <div flex class="info">
-      <!-- 声明公司已注册，放备案内容 -->
-      <div>
+    <div flex flex-wrap class="info">
+      <div class="copyright">
         Copyright © 2024 QuotaWish Inc.
       </div>
       <div>
@@ -23,6 +22,12 @@
 </template>
 
 <style>
+@media (max-width: 768px) {
+  .copyright {
+    display: none;
+  }
+}
+
 div.logo,
 div.logo img {
   width: 128px;
@@ -50,6 +55,8 @@ footer {
 
   left: 50%;
 
+  flex: 1;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
 

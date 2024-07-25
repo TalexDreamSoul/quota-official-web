@@ -52,7 +52,7 @@ const broadcast = reactive([
       <img src="/flower.jpg">
 
       <div class="Flower-Desc">
-        <h1>QuotaDesign</h1>
+        <h1><span>QuotaDesign</span></h1>
         <span>富有淡然雅致的饱满设计.</span>
       </div>
     </div>
@@ -75,6 +75,9 @@ const broadcast = reactive([
 }
 
 .Flower-Desc h1 {
+  max-width: 80%;
+  text-overflow: ellipsis;
+
   font-size: 5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -105,9 +108,10 @@ const broadcast = reactive([
   position: relative;
 
   display: flex;
+  flex-wrap: wrap;
 
   width: 100%;
-  height: 140px;
+  min-height: 140px;
 
   align-items: center;
   justify-content: space-around;
@@ -120,6 +124,10 @@ const broadcast = reactive([
 .Broadcast div:hover {
   cursor: pointer;
   color: #3ab8fd;
+}
+
+.Broadcast div {
+  margin: 1rem;
 }
 
 .Broadcast div p {
@@ -182,6 +190,8 @@ const broadcast = reactive([
 
 .Major-Desc p {
   opacity: 0.75;
+
+  max-width: 80%;
 
   font-size: 1.5rem;
 }
