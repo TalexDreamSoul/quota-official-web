@@ -1,3 +1,12 @@
+<script setup>
+// 获取 page meta
+const route = useRoute()
+
+watch(() => route.value, () => {
+  console.log('r', route)
+}, { immediate: true })
+</script>
+
 <template>
   <main
     class="DefaultLayout"

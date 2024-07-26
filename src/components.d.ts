@@ -10,11 +10,12 @@ declare module 'vue' {
     AiProduct: typeof import('./components/swipers/ai-product.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
+    ModelBox: typeof import('./components/thisai/ModelBox.vue')['default']
+    ModelIntro: typeof import('./components/thisai/ModelIntro.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TheCounter: typeof import('./components/TheCounter.vue')['default']
-    TheFooter: typeof import('./components/TheFooter.vue')['default']
     TheInput: typeof import('./components/TheInput.vue')['default']
   }
 }
