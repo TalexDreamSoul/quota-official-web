@@ -11,10 +11,10 @@ watch(() => route.value, () => {
   <main
     class="DefaultLayout"
   >
-    <Header />
+    <Header v-if="!route.meta.layout" />
     <RouterView />
 
-    <Footer />
+    <Footer v-if="!route.meta.layout" />
   </main>
 </template>
 
