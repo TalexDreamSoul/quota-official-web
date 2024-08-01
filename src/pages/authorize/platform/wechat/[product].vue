@@ -6,7 +6,7 @@
 
 const route = useRoute()
 
-const uaAvailable = computed(() => navigator.userAgent.includes('WeChat'))
+const uaAvailable = computed(() => navigator.userAgent.toLocaleLowerCase().includes('wechat'))
 const product = computed(() => route.params.product as string)
 
 const queryAvailable = computed(() => route.query.code && route.query.state)
