@@ -6,12 +6,13 @@
 
 const route = useRoute()
 
-const uaAvailable = computed(() => navigator.userAgent.toLocaleLowerCase().includes('wechat'))
+const uaAvailable = computed(() => navigator.userAgent.toLowerCase().includes('wechat'))
 const product = computed(() => route.params.product as string)
 
 const queryAvailable = computed(() => route.query.code && route.query.state)
 
 const status = ref(false)
+const ignoreEnv = ref(false)
 async function authorize() {
   if (status.value)
     return
@@ -35,14 +36,14 @@ async function authorize() {
 <template>
   <div class="PlatForm">
     <div v-if="product === 'thisai'" class="PlatForm-Dialog">
-      <template v-if="!uaAvailable">
+      <template v-if="!uaAvailable && !ignoreEnv">
         <div class="icon">
-          <div i-carbon:checkmark-filled-error />
+          <div i-carbon:face-dissatisfied />
         </div>
-        <p>无法完成授权</p>
+        <p>微信环境不安全</p>
 
-        <button class="error" my-6>
-          当前环境不安全
+        <button class="warn" my-6 @click="ignoreEnv = true">
+          继续授权
         </button>
       </template>
       <template v-else-if="!queryAvailable">
@@ -101,6 +102,11 @@ meta:
 .PlatForm-Dialog button.error {
   background-color: #f04e48;
   box-shadow: 0 0 12px #f04e48;
+}
+
+.PlatForm-Dialog button.warn {
+  background-color: #e78248;
+  box-shadow: 0 0 12px #e78248;
 }
 
 .PlatForm-Dialog .icon {
