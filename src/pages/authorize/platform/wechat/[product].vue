@@ -64,7 +64,7 @@ const success = computed(() => response.value?.data === 'success')
         </div>
         <p v-if="response">
           {{ success ? '授权成功' : '授权失败' }}
-          <span>({{ response }})</span>
+          <span v-if="!success">({{ response }})</span>
         </p>
         <p v-else>
           等待授权
