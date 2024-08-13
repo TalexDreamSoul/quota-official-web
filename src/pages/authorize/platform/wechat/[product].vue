@@ -14,7 +14,7 @@ const queryAvailable = computed(() => route.query.code && route.query.state)
 const response = ref<any>()
 const ignoreEnv = ref(false)
 async function authorize() {
-  if (status.value)
+  if (response.value)
     return
 
   const url = `https://api.quotawish.com/api/platform/qrcode/auth/wechat?code=${route.query.code}&state=${route.query.state}`
