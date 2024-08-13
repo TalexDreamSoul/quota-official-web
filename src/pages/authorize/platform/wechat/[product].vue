@@ -11,7 +11,7 @@ const product = computed(() => route.params.product as string)
 
 const queryAvailable = computed(() => route.query.code && route.query.state)
 
-const status = ref(false)
+const response = ref<any>()
 const ignoreEnv = ref(false)
 async function authorize() {
   if (status.value)
@@ -23,7 +23,7 @@ async function authorize() {
     const res = await fetch(url)
     const data = await res.json()
 
-    status.value = data.data === 'success'
+    response.value = data
 
     console.log('data', data)
   }
@@ -31,6 +31,8 @@ async function authorize() {
     console.error(error)
   }
 }
+
+const success = computed(() => response.value.data === 'success')
 </script>
 
 <template>
@@ -60,12 +62,16 @@ async function authorize() {
         <div class="icon">
           <div i-carbon:devices />
         </div>
-        <p>
-          {{ status ? '授权成功' : '等待授权' }}
+        <p v-if="response">
+          {{ success ? '授权成功' : '授权失败' }}
+          <span>({{ response }})</span>
+        </p>
+        <p v-else>
+          等待授权
         </p>
 
-        <button my-6 @click="authorize">
-          {{ status ? '您已成功登录 科塔智爱' : '点击授权登录' }}
+        <button v-if="!response" my-6 @click="authorize">
+          {{ success ? '您已成功登录 科塔智爱' : '点击授权登录' }}
         </button>
       </template>
     </div>
