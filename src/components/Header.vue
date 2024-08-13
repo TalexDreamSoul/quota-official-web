@@ -26,7 +26,7 @@ const router = useRouter()
 </template>
 
 <style>
-@media (max-width: 768px) {
+@media screen and (max-width: 1080px) {
   .header-nav-bar,
   .header-nav-personal {
     display: none;

@@ -4,7 +4,7 @@
 
 <template>
   <div h-full>
-    <div class="major-inner" />
+    <div class="Major-inner" />
 
     <div class="Major-Desc">
       <h1>科塔锐行 | ThisAI</h1>
