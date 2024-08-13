@@ -32,7 +32,7 @@ async function authorize() {
   }
 }
 
-const success = computed(() => response.value.data === 'success')
+const success = computed(() => response.value?.data === 'success')
 </script>
 
 <template>
