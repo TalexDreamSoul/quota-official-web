@@ -1130,7 +1130,9 @@ class Sketch extends kokomi.Base {
 }
 
 function createSketch() {
-  const sketch = new Sketch()
+  const sketch = new Sketch('#sketch', {
+    hello: false,
+  })
   sketch.create()
   return sketch
 }

@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { Autoplay, Controller, EffectCreative } from 'swiper/modules'
+import { A11y, Autoplay, Controller, EffectCreative, Navigation, Pagination, Scrollbar } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/effect-creative'
 import 'swiper/css/controller'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/scrollbar'
 
 defineOptions({
   name: 'IndexPage',
@@ -34,12 +37,16 @@ const broadcast = reactive([
 <template>
   <div>
     <div class="Major">
-      <Swiper :modules="[EffectCreative, Controller, Autoplay]" effect="creative">
+      <Swiper
+        :autoplay="{ delay: 1000, disableOnInteraction: false }"
+        navigation :pagination="{ clickable: true }" :scrollbar="{ draggable: true }"
+        :modules="[EffectCreative, Controller, Autoplay, Navigation, Pagination, Scrollbar, A11y]" effect="creative"
+      >
         <SwiperSlide>
           <AiProduct />
         </SwiperSlide>
         <SwiperSlide>
-          <AiProduct />
+          <TouchProduct />
         </SwiperSlide>
       </Swiper>
     </div>
@@ -152,5 +159,7 @@ div.swiper,
 .swiper-wrapper,
 .swiper-slide {
   height: 100%;
+
+  background-color: #262626;
 }
 </style>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { Swiper } from 'swiper'
 import * as kokomi from 'kokomi.js'
 import * as THREE from 'three'
@@ -639,12 +639,8 @@ void main(){
 `
 
 class LiquidCrystal extends kokomi.Component {
-  constructor(base, config) {
+  constructor(base) {
     super(base)
-
-    const { scroller } = config
-
-    this.scroller = scroller
 
     const resourceList = [
       {
@@ -780,7 +776,7 @@ class LiquidCrystal extends kokomi.Component {
       }
 
       // move
-      this.moveTo(this.moveTargetX, this.moveTargetY)
+      // this.moveTo(this.moveTargetX, this.moveTargetY)
 
       // aspect
       if (window.innerHeight / window.innerWidth > 1) {
@@ -860,105 +856,6 @@ class LiquidCrystal extends kokomi.Component {
   }
 }
 
-class WebGLText extends kokomi.Component {
-  constructor(base, config) {
-    super(base)
-
-    const { scroller } = config
-
-    const mg = new kokomi.MojiGroup(base, {
-      vertexShader: vertexShader2,
-      fragmentShader: fragmentShader2,
-      scroller,
-      elList: [...document.querySelectorAll('.webgl-text')],
-    })
-    this.mg = mg
-  }
-
-  addExisting() {
-    this.mg.addExisting()
-
-    this.mg.mojis.forEach((moji) => {
-      moji.textMesh.mesh.letterSpacing = 0.05
-    })
-  }
-}
-
-class WebGLGallery extends kokomi.Component {
-  constructor(base, config) {
-    super(base)
-
-    const { scroller } = config
-
-    const gallary = new kokomi.Gallery(base, {
-      vertexShader: vertexShader3,
-      fragmentShader: fragmentShader3,
-      materialParams: {
-        transparent: true,
-      },
-      scroller,
-      elList: [...document.querySelectorAll('.webgl-img')],
-      isScrollPositionSync: false,
-      uniforms: {
-        uOpacity: 1,
-      },
-    })
-    this.gallary = gallary
-
-    this.targetX = 0
-    this.targetY = 0
-  }
-
-  async addExisting() {
-    await this.gallary.addExisting()
-  }
-
-  hideAll() {
-    this.gallary.makuGroup.makus.forEach((maku) => {
-      maku.mesh.visible = false
-    })
-  }
-
-  connectSwiper(swiper) {
-    this.swiper = swiper
-  }
-
-  update() {
-    if (this.gallary.makuGroup) {
-      // swiper
-      if (this.swiper)
-        this.gallary.scroller.scroll.target = -this.swiper.translate
-
-      // mouse
-      this.targetX = THREE.MathUtils.lerp(
-        this.targetX,
-        this.base.interactionManager.mouse.x / 40,
-        0.1,
-      )
-      this.targetY = THREE.MathUtils.lerp(
-        this.targetY,
-        this.base.interactionManager.mouse.y / 40,
-        0.1,
-      )
-
-      this.gallary.makuGroup.makus.forEach((maku) => {
-        // mouse follow
-        if (maku.el.dataset.webglMouseFollow === '1') {
-          this.base.update(() => {
-            const offsetX = Number(maku.el.dataset.webglMouseOffsetX) || 0
-            const posX = this.targetX + offsetX
-            const offsetY = Number(maku.el.dataset.webglMouseOffsetY) || 0
-            const posY = this.targetY + offsetY
-
-            maku.mesh.position.x = (posX * window.innerWidth) / 2
-            maku.mesh.position.y = (posY * window.innerHeight) / 2
-          })
-        }
-      })
-    }
-  }
-}
-
 class Sketch extends kokomi.Base {
   async create() {
     const screenCamera = new kokomi.ScreenCamera(this)
@@ -977,28 +874,11 @@ class Sketch extends kokomi.Base {
       })
     }
 
-    // --swiper--
-    const swiper = new Swiper('.swiper', {
-      direction: 'vertical',
-      mousewheel: true,
-    })
-    window.swiper = swiper
-
     // await start();
     // return;
 
-    // --webgl--
-
-    // scroller
-    const scroller = new kokomi.NormalScroller(this)
-    scroller.scroll.ease = 0.025
-    scroller.syncScroll()
-    // scroller.listenForScroll()
-
     // liquid crystal
-    const lc = new LiquidCrystal(this, {
-      scroller,
-    })
+    const lc = new LiquidCrystal(this)
 
     await lc.addExisting()
 
@@ -1008,13 +888,6 @@ class Sketch extends kokomi.Base {
     // rt for text
     const rtScene1 = new THREE.Scene()
 
-    const mojiClones = wt.mg.mojis.map((moji) => {
-      const mojiClone = moji.textMesh.mesh.clone()
-      mojiClone.origin = moji.textMesh.mesh
-      rtScene1.add(mojiClone)
-      return mojiClone
-    })
-
     const rt = new kokomi.RenderTexture(this, {
       rtScene: rtScene1,
       rtCamera: this.camera,
@@ -1022,26 +895,10 @@ class Sketch extends kokomi.Base {
 
     this.update(() => {
       lc.setRt(rt)
-
-      if (mojiClones) {
-        mojiClones.forEach((mojiClone) => {
-          mojiClone.position.copy(mojiClone.origin.position)
-        })
-      }
     })
 
     // rt for img
     const rtScene2 = new THREE.Scene()
-
-    const makuClones = wg.gallary.makuGroup.makus.map((maku) => {
-      const makuClone = maku.mesh.clone()
-      makuClone.origin = maku.mesh
-      makuClone.el = maku.el
-      rtScene2.add(makuClone)
-      return makuClone
-    })
-
-    wg.hideAll()
 
     const rt2 = new kokomi.RenderTexture(this, {
       rtScene: rtScene2,
@@ -1050,39 +907,16 @@ class Sketch extends kokomi.Base {
 
     this.update(() => {
       lc.setRt2(rt2)
-
-      if (wg.gallary.makuGroup.makus && makuClones) {
-        makuClones.forEach((makuClone) => {
-          makuClone.position.copy(makuClone.origin.position)
-        })
-      }
     })
-
-    const showImgOnly = (id) => {
-      makuClones.forEach((maku) => {
-        gsap.to(maku.material.uniforms.uOpacity, {
-          value: 0,
-          duration: 0.8,
-        })
-
-        if (id === Number(maku.el.dataset.webglImgId)) {
-          gsap.to(maku.material.uniforms.uOpacity, {
-            value: 1,
-            duration: 0.8,
-          })
-        }
-      })
-    }
-
-    // load images
-    await wg.gallary.checkImagesLoaded()
 
     await start()
   }
 }
 
 function createSketch() {
-  const sketch = new Sketch()
+  const sketch = new Sketch('#sketch', {
+    hello: false,
+  })
   sketch.create()
   return sketch
 }
@@ -1157,6 +991,18 @@ onMounted(() => {
 </template>
 
 <style>
+#sketch {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
 .Major-Button {
   position: absolute;
 
@@ -1223,7 +1069,7 @@ onMounted(() => {
 
   font-size: 2rem;
 
-  mix-blend-mode: soft-light;
+  mix-blend-mode: hard-light;
   transform: translate(-50%, -50%);
 }
 

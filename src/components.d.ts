@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AiProduct: typeof import('./components/swipers/ai-product.vue')['default']
+    copy: typeof import('./components/swipers/ai-product copy.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
     ModelBox: typeof import('./components/thisai/ModelBox.vue')['default']
@@ -22,5 +23,6 @@ declare module 'vue' {
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheInput: typeof import('./components/TheInput.vue')['default']
     Thisai: typeof import('./components/thisai/thisai.vue')['default']
+    TouchProduct: typeof import('./components/swipers/touch-product.vue')['default']
   }
 }
