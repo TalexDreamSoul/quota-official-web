@@ -5,16 +5,20 @@ const route = useRoute()
 watch(() => route.value, () => {
   console.log('r', route)
 }, { immediate: true })
+
+const fullScreenPage = ['/thisai']
+
+const hide = computed(() => fullScreenPage.filter(item => route.fullPath.startsWith(item))?.length)
 </script>
 
 <template>
   <main
     class="DefaultLayout"
   >
-    <Header v-if="!route.meta.layout" />
+    <Header v-if="!hide" />
     <RouterView />
 
-    <Footer v-if="!route.meta.layout" />
+    <Footer v-if="!hide" />
   </main>
 </template>
 

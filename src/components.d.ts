@@ -15,7 +15,12 @@ declare module 'vue' {
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SliderAnnounce: typeof import('./components/thisai/SliderAnnounce.vue')['default']
+    SliderIndex: typeof import('./components/thisai/SliderIndex.vue')['default']
+    SliderIntro: typeof import('./components/thisai/SliderIntro.vue')['default']
+    SliderSlogan: typeof import('./components/thisai/SliderSlogan.vue')['default']
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheInput: typeof import('./components/TheInput.vue')['default']
+    Thisai: typeof import('./components/thisai/thisai.vue')['default']
   }
 }
