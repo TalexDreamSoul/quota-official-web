@@ -85,14 +85,12 @@ const broadcast = reactive([
   font-weight: 600;
   margin-bottom: 0.5rem;
   line-height: 1.5;
-  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
 .Flower-Desc span {
   font-size: 2.5rem;
   font-weight: 400;
   line-height: 1.5;
-  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
 .Flower {
@@ -119,10 +117,10 @@ const broadcast = reactive([
   align-items: center;
   justify-content: space-around;
 
-  color: #000;
-  background-color: #fff;
-  border-top: 1px solid #f1f1f3;
-  border-bottom: 1px solid #f1f1f3;
+  color: #fff;
+  background-color: #161616;
+  border-top: 1px solid #262626;
+  border-bottom: 1px solid #262626;
 }
 
 .Broadcast div:hover {
@@ -146,7 +144,7 @@ const broadcast = reactive([
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #000;
+  color: #fff;
   font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 

@@ -19,7 +19,7 @@ const router = useRouter()
       <span cursor-pointer hover:op-75>科塔开放</span>
     </div>
 
-    <div class="header-nav-personal personal" mr-2 flex flex-1 items-center justify-center text-right text-1.125rem>
+    <div class="header-nav-personal personal" mr-2 flex flex-1 items-center justify-center text-right text-0.8125rem>
       注册 | 登录
     </div>
   </header>
@@ -44,7 +44,7 @@ header {
 
   font-size: 20px;
 
-  color: #000;
+  color: #fff;
   align-items: center;
   justify-content: space-around;
 }
