@@ -8,7 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AiProduct: typeof import('./components/swipers/ai-product.vue')['default']
-    copy: typeof import('./components/swipers/ai-product copy.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
     ModelBox: typeof import('./components/thisai/ModelBox.vue')['default']
