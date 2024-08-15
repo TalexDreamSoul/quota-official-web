@@ -38,7 +38,7 @@ const broadcast = reactive([
   <div>
     <div class="Major">
       <Swiper
-        :autoplay="{ delay: 1000, disableOnInteraction: false }"
+        :autoplay="{ delay: 3000, disableOnInteraction: true }"
         navigation :pagination="{ clickable: true }" :scrollbar="{ draggable: true }"
         :modules="[EffectCreative, Controller, Autoplay, Navigation, Pagination, Scrollbar, A11y]" effect="creative"
       >
