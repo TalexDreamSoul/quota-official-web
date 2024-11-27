@@ -97,7 +97,8 @@ const broadcast = reactive([
     height: 200px;
     object-fit: contain;
 
-    filter: invert(1);
+    opacity: 0.85;
+    filter: brightness(200%) invert(0.95);
   }
   max-width: 80%;
   text-overflow: ellipsis;
