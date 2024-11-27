@@ -1000,6 +1000,7 @@ onMounted(() => {
   width: 100%;
   height: 100%;
 
+  filter: brightness(300%);
   overflow: hidden;
 }
 
@@ -1013,9 +1014,8 @@ onMounted(() => {
 }
 
 .Major-Button button:hover {
-  background-color: #212121;
-  color: #fff;
-  border: 1px solid #262626;
+  color: #000;
+  background-color: #efefef;
 
   border-radius: 1rem;
 }
@@ -1024,8 +1024,8 @@ onMounted(() => {
   padding: 0.5rem 0.75rem;
 
   color: #fff;
-  background-color: #21212150;
-  border: 1px solid #262626;
+  background-color: #efefef50;
+  border: 1px solid #fefefe;
   border-radius: 0.75rem;
 
   font-size: 16px;
@@ -1063,6 +1063,7 @@ onMounted(() => {
 
   width: max-content;
 
+  color: #fff;
   align-items: center;
   justify-content: center;
   flex-direction: column;

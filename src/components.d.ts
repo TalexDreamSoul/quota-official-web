@@ -12,6 +12,8 @@ declare module 'vue' {
     Header: typeof import('./components/Header.vue')['default']
     ModelBox: typeof import('./components/thisai/ModelBox.vue')['default']
     ModelIntro: typeof import('./components/thisai/ModelIntro.vue')['default']
+    NavTab: typeof import('./components/tabs/NavTab.vue')['default']
+    NavTabItem: typeof import('./components/tabs/NavTabItem.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -23,5 +25,7 @@ declare module 'vue' {
     TheInput: typeof import('./components/TheInput.vue')['default']
     Thisai: typeof import('./components/thisai/thisai.vue')['default']
     TouchProduct: typeof import('./components/swipers/touch-product.vue')['default']
+    TSelect: typeof import('./components/tabs/TSelect.vue')['default']
+    TSelectItem: typeof import('./components/tabs/TSelectItem.vue')['default']
   }
 }

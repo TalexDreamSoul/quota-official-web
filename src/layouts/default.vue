@@ -31,10 +31,10 @@ const hide = computed(() => fullScreenPage.filter(item => route.fullPath.startsW
   left: 0;
 
   width: 100%;
-  height: 80px;
+  height: 64px;
 
-  background-color: #101010a0;
-  border-bottom: 1px solid #161616;
+  /* background-color: #101010a0; */
+  /* border-bottom: 1px solid #161616; */
   backdrop-filter: blur(18px) saturate(180%);
 }
 
@@ -47,6 +47,6 @@ main.DefaultLayout {
   width: 100%;
   height: 100%;
 
-  background-color: #262626;
+  /* background-color: #262626; */
 }
 </style>

@@ -618,7 +618,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div h-full>
+  <div class="TouchProduct" h-full>
     <div id="sketch2" />
 
     <div class="Major-Title display">
@@ -646,7 +646,7 @@ onMounted(() => {
   width: 100%;
   height: 100%;
 
-  background-color: black;
+  background-color: white;
 }
 
 .Major-Button {
@@ -658,7 +658,7 @@ onMounted(() => {
   transform: translate(-50%, -50%);
 }
 
-.Major-Button button:hover {
+.TouchProduct .Major-Button button:hover {
   background-color: #212121;
   color: #fff;
   border: 1px solid #262626;
@@ -666,10 +666,10 @@ onMounted(() => {
   border-radius: 1rem;
 }
 
-.Major-Button button {
+.TouchProduct .Major-Button button {
   padding: 0.5rem 0.75rem;
 
-  color: #fff;
+  color: #000;
   background-color: #21212150;
   border: 1px solid #262626;
   border-radius: 0.75rem;
@@ -703,16 +703,16 @@ onMounted(() => {
 .Major-Title.display {
   z-index: 1;
 
-  opacity: 0.25;
+  opacity: 0.75;
   mix-blend-mode: difference;
   transform: translate(-50%, 0);
 }
 
 .Major-Title.show {
-  /* color: #eeeeee; */
+  opacity: 0.5;
   /* mix-blend-mode: difference; */
   transform: translate(-50%, 0);
-  mix-blend-mode: color-dodge;
+  /* mix-blend-mode: difference; */
 }
 
 .Major-Title {
@@ -730,7 +730,7 @@ onMounted(() => {
 
   font-size: 2rem;
 
-  color: #eeeeee;
+  color: #212121;
   transform: translate(-50%, -50%);
 }
 </style>

@@ -17,7 +17,7 @@ defineOptions({
 const broadcast = reactive([
   {
     title: '科塔智爱 @ 全新上线',
-    desc: '是智爱，也曾是挚爱',
+    desc: '更有效率、更准确的AI',
   },
   {
     title: '科塔慧编 @ 正在研发',
@@ -51,7 +51,7 @@ const broadcast = reactive([
       </Swiper>
     </div>
 
-    <div class="Broadcast">
+    <div py-4 class="Broadcast">
       <div v-for="item in broadcast" :key="item.title">
         <p>{{ item.title }}</p>
         <span>{{ item.desc }}</span>
@@ -62,7 +62,7 @@ const broadcast = reactive([
       <img src="/flower.jpg">
 
       <div class="Flower-Desc">
-        <h1><span>QuotaDesign</span></h1>
+        <h1><img src="/design-logo.png" alt="logo"></h1>
         <span>富有淡然雅致的饱满设计.</span>
       </div>
     </div>
@@ -73,18 +73,32 @@ const broadcast = reactive([
 .Flower-Desc {
   z-index: 1;
   position: absolute;
+  display: flex;
 
   left: 50%;
   top: 50%;
 
-  color: #fff;
+  /* color: #fff; */
   font-size: 1.5rem;
+
+  align-items: center;
+  flex-direction: column;
 
   text-align: center;
   transform: translate(-50%, -50%);
 }
 
 .Flower-Desc h1 {
+  img {
+    position: relative;
+    left: 10%;
+
+    width: 80%;
+    height: 200px;
+    object-fit: contain;
+
+    filter: invert(1);
+  }
   max-width: 80%;
   text-overflow: ellipsis;
 
@@ -96,12 +110,19 @@ const broadcast = reactive([
 
 .Flower-Desc span {
   font-size: 2.5rem;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.5;
+
+  background: -webkit-linear-gradient(345deg, #a9b3cd 25%, #647eff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .Flower {
   position: relative;
+
+  color: #fff;
 }
 
 .Flower img {
@@ -124,8 +145,8 @@ const broadcast = reactive([
   align-items: center;
   justify-content: space-around;
 
-  color: #fff;
-  background-color: #161616;
+  /* color: #fff; */
+  background-color: #fff;
   border-top: 1px solid #262626;
   border-bottom: 1px solid #262626;
 }
@@ -140,18 +161,16 @@ const broadcast = reactive([
 }
 
 .Broadcast div p {
-  font-size: 1.5rem;
+  font-size: 28px;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
+  margin-bottom: 0.125rem;
   font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
 .Broadcast div span {
-  font-size: 1.25rem;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 1.5;
-  color: #fff;
+  /* color: #fff; */
   font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
@@ -160,6 +179,6 @@ div.swiper,
 .swiper-slide {
   height: 100%;
 
-  background-color: #262626;
+  background-color: #efefef;
 }
 </style>
