@@ -38,7 +38,7 @@ const success = computed(() => response.value?.message === 'success')
 <template>
   <div class="PlatForm">
     <div v-if="product === 'thisai'" class="PlatForm-Dialog">
-      <template v-if="!uaAvailable && !ignoreEnv">
+      <!-- <template v-if="!uaAvailable && !ignoreEnv">
         <div class="icon">
           <div i-carbon:face-dissatisfied />
         </div>
@@ -47,8 +47,8 @@ const success = computed(() => response.value?.message === 'success')
         <button class="warn" my-6 @click="ignoreEnv = true">
           继续授权
         </button>
-      </template>
-      <template v-else-if="!queryAvailable">
+      </template> -->
+      <template v-if="!queryAvailable">
         <div class="icon">
           <div i-carbon:checkmark-filled-error />
         </div>

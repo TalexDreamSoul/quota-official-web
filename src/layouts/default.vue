@@ -6,9 +6,9 @@ watch(() => route.value, () => {
   console.log('r', route)
 }, { immediate: true })
 
-const fullScreenPage = ['/thisai']
+const fullScreenPage = ['/thisai', '/authorize']
 
-const hide = computed(() => fullScreenPage.filter(item => route.fullPath.startsWith(item))?.length)
+const hide = computed(() => fullScreenPage.filter(item => route.fullPath.toLocaleLowerCase().startsWith(item))?.length)
 </script>
 
 <template>
